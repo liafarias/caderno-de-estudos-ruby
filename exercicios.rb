@@ -70,4 +70,83 @@ loop do
     end
 end
 
- 
+
+######EXERCICIO AULA 4######
+#Utilizando uma collection do tipo Array, escreva um programa que receba 3 números e no final exiba o resultado de cada um deles elevado a segunda potência.
+
+arraymap = [1, 2, 3]
+arraymap.map! do |a|
+    a **  2
+end
+#puts arraymap
+
+#Crie uma collection do tipo Hash e permita que o usuário crie três elementos informando a chave e o valor. No final do programa para cada um desses elementos imprima a frase “Uma das chaves é **** e o seu valor é ****”
+
+hash = {}
+puts 'Digite sua primeira chave'
+chave1 = gets.chomp
+puts 'Digite seu primeiro valor'
+valor1 = gets.chomp
+puts 'Digite sua segunda chave'
+chave2 = gets.chomp
+puts 'Digite seu segundo valor'
+valor2 = gets.chomp
+puts 'Digite sua terceira chave'
+chave3 = gets.chomp
+puts 'Digite seu terceiro valor'
+valor3 = gets.chomp
+
+hash[chave1] = valor1
+hash[chave2] = valor2
+hash[chave3] = valor3
+
+puts hash
+
+puts "Uma das chaves é #{chave1} e o seu valor é #{valor1}"
+puts "Uma das chaves é #{chave2} e o seu valor é #{valor2}"
+puts "Uma das chaves é #{chave3} e o seu valor é #{valor3}"
+
+#Crie uma instrução que seleciona o maior valor deste hash e no final imprima a chave e valor do elemento resultante.
+numbers = {a: 10, b: 30, c: 20, d: 25, e: 15}
+    valor_maior = 0
+    result = []
+    numbers.each do |key, value|
+        if value > valor_maior
+            valor_maior = value
+            result = [key, value]
+        end
+end
+puts "maior valor: #{result}"
+
+
+######EXERCICIO AULA 4######
+#Crie um programa que possua um método que resolva a potência dado um número base e seu expoente. Estes dois valores devem ser informados pelo usuário.
+
+def potenciaDeNumero (base, potencia)
+    result = base ** potencia
+    puts result
+end
+
+puts 'Digite um numero'
+base = gets.chomp.to_i
+puts 'Digite sua potencia'
+potencia = gets.chomp.to_i
+
+potenciaDeNumero(base, potencia)
+
+#Siga a documentação da gem cpf_cnpj para criar um programa que recebe como entrada um número de cpf e em um método verifique se este número é válido.
+#Link da documntação: https://github.com/fnando/cpf_cnpj
+
+require "cpf_cnpj"
+
+def verificaCPF number
+    if CPF.valid?(number)
+        puts 'CPF valido'
+    else
+        puts 'CPF invalido'
+    end
+end
+puts 'Digite um CPF'
+number = gets.chomp
+result = verificaCPF(number)
+resultEnd = result
