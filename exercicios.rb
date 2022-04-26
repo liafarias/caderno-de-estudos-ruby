@@ -151,6 +151,7 @@ number = gets.chomp
 result = verificaCPF(number)
 resultEnd = result
 
+
 ######EXERCICIO AULA 5######
 #crie um programa seguindo este paradigma com:
     #Classes
@@ -192,3 +193,63 @@ puts 'MARATONISTA'
 maratonista = Maratonista.new
 maratonista.competir
 maratonista.correr
+
+
+######EXERCICIO AULA 6######
+#O exercicio está na pasta exercicioAula6 - Compras
+
+
+######EXERCICIO AULA 7######
+#O ruby oferece um método chamado capitalize para tornar a primeira letra de uma string maiúscula.
+#Sabendo disso crie uma lambda que recebe um nome como parâmetro e o imprime com a primeira letra maiúscula. Esta lambda deverá ser salva dentro de uma variável que será passada como argumento de um método chamado capitalize_name.
+#Dentro deste método você chamará a lambda duas vezes, passando como parâmetro em cada uma delas um nome diferente.  
+
+def capitalize_name (letraMaiuscula)
+    puts letraMaiuscula.call('lia')
+    puts letraMaiuscula.call('maria')
+end
+
+letraMaiuscula = -> (nome) {nome.capitalize}
+
+capitalize_name(letraMaiuscula)
+
+#Crie um módulo chamado Person com as classes Juridic e Physical.
+#Ao executar a instrução: Person::Juridic.new('M. C. Investimentos', '4241.123/0001').add
+#Seu código deverá retornar:
+    #Pessoa Juridica adicionada
+    #nome: M.C. Investimentos
+    #cnpj: 4241.123/0001
+#E com a instrução: Person::Physical.new('José Almeida', '425.123.123-123').add
+#Deverá retortornar:
+    #Pessoa Fisica adicionada
+    #nome: José Almeida
+    #cpf: 425.123.123-123
+
+    module Person
+        class Juridic
+            def initialize (name, cnpj)
+                @name = name
+                @cnpj = cnpj
+            end
+            def add
+                puts 'Pessoa juridica adicionada'
+                puts "nome: #{@name}"
+                puts "cnpj: #{@cnpj}"
+            end
+        end
+        class Physical
+            def initialize (name, cpf)
+                @name = name
+                @cpf = cpf
+            end
+            def add
+                puts 'Pessoa fisica adicionada'
+                puts "nome: #{@name}"
+                puts "cnpj: #{@cpf}"
+            end
+        end
+    end
+    
+    Person::Juridic.new('M. C. Investimentos', '4241.123/0001').add
+    puts ''
+    Person::Physical.new('José Almeida', '425.123.123-123').add
